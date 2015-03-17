@@ -116,6 +116,7 @@ angular.module('unleashApp')
       /**
        * Actions related to logout
        */
+
       logout: function(options) {
         options = options || {};
 
@@ -127,6 +128,33 @@ angular.module('unleashApp')
         }
 
         $location.path('/');
+      },
+
+      /**
+       * Actions related to give admin.
+       */
+
+      setUserAdmin: function (data) {
+        var queryRef = ref.child('users');
+        var storedUsers;
+        var userData;
+
+        queryRef.once('value', function (snapshot) {
+          storedUsers = snapshot.val() || {};
+          userData = storedUsers[data.$id];
+
+          /*jshint camelcase: false */
+          if(storedUsers[data.$id].is_admin === 1) {
+            userData.is_admin = 0;
+            ref.child('users').child(data.$id).set(userData);
+            growl.success('Succefully removed admin access for ' + userData.username);
+          } else {
+            userData.is_admin = 1;
+            ref.child('users').child(data.$id).set(userData);
+            growl.success('Succefully added admin access for ' + userData.username);
+          }
+          /*jshint camelcase: true */
+        });
       },
 
       /**

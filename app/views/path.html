@@ -2,6 +2,7 @@
 
 <div class="toggle-edit-action animate-if" ng-if="user.isAdmin && !initializing && !pathNotFound">
   <a ng-href="/paths/{{ params.userId }}/edit" ng-cloak>Edit this path</a>
+  <div unleash-set-admin></div>
 </div>
 
 <unleash-person name="{{ currentPathOwner.google.displayName }}" thumb="{{ currentPathOwner.google.cachedUserProfile.picture }}"></unleash-person>
