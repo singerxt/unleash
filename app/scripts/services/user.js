@@ -147,11 +147,11 @@ angular.module('unleashApp')
           if(storedUsers[data.$id].is_admin === 1) {
             userData.is_admin = 0;
             ref.child('users').child(data.$id).set(userData);
-            growl.success('Succefully removed admin access for ' + userData.username);
+            growl.success('Succesfully removed admin access for ' + userData.username);
           } else {
             userData.is_admin = 1;
             ref.child('users').child(data.$id).set(userData);
-            growl.success('Succefully added admin access for ' + userData.username);
+            growl.success('Succesfully added admin access for ' + userData.username);
           }
           /*jshint camelcase: true */
         });
