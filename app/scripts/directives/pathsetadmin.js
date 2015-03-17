@@ -11,7 +11,7 @@ angular.module('unleashApp')
   .directive('unleashSetAdmin', function(userService) {
     return {
       template: '<a href="#" ng-click="giveAdminAccess(currentPathOwner)">Admin toggle</a>',
-      replace: true,
+      replace: false,
       link: function templateSetAdmin(scope) {
         scope.giveAdminAccess = userService.setUserAdmin;
       }
